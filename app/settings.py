@@ -198,10 +198,10 @@ INCLUDE_HTTPS_SCHEMA = bool(int(os.environ.get("INCLUDE_HTTPS_SCHEMA", True)))
 # static files settings
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
+    os.path.join(BASE_DIR, 'static/'),
 )
 STATIC_ROOT = os.path.join(
-    BASE_DIR,'staticfiles'
+    BASE_DIR,'staticfiles/'
 )
 
 MEDIA_URL = '/upload/images/'
