@@ -54,7 +54,7 @@ class GameFilter(filters.FilterSet):
     def filter_game(self , queryset , name , value):
         if value:
             spelled_value = spell(value)
-            games_names = queryset.values_list('game' , flat=True)
+            games_names = queryset.values_list('game' , flat=True).distinct()
             if spelled_value not in games_names:
                 # here we get the closest match to the game name
                 closet_match = get_close_matches(spelled_value , games_names)
