@@ -85,6 +85,6 @@ style="margin-right: 10px;"/>
 Created at 🌙 by HamdiAAA
 - my profile : [Hamdi Mohamed ](https://github.com/HamdiAAA).
 ### 2022 FUN FACTS : 
-- House of the dragons
+- House of the dragons is the best show for this year.
 - God of war ragnarok is the game of the year.
-- the witcher 3 wild hunt is the best game of all times ❤ .
+- the witcher 3 wild hunt is the best game of all times ❤❤❤.
