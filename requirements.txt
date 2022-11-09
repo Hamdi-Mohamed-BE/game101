@@ -29,3 +29,5 @@ google-api-python-client<=2.62.0
 
 # beautifulsoup
 beautifulsoup4
+# autocorrect
+autocorrect
