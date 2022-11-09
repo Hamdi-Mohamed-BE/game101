@@ -111,7 +111,6 @@ class GameFilterTestAPI(TestCase):
         self.assertEqual(res.status_code , status.HTTP_200_OK)
         # get the games returned from the api
         games_loaded = res.data['results']
-        print(games_loaded)
         # make sure that the response is not empty
         self.assertTrue(len(games_loaded) > 0)
         # print a green message saying that the test passed

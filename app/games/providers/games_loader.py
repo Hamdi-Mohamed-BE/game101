@@ -42,4 +42,4 @@ def load_games_to_db()-> None:
             # save the game
             instance.save()
             # print green message saying that the game is saved successfully
-            print(f'\033[92m{game["game"]} is saved successfully\033[0m')
+            # print(f'\033[92m{game["game"]} is saved successfully\033[0m')
