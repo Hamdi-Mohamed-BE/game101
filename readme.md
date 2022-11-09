@@ -42,9 +42,8 @@
 ## Features ##
 
 1. Server is served at http://localhost:80
-2. Swagger docs are served at http://localhost/docs/all and http://localhost/docs/{app name}
+2. Swagger docs are served at http://localhost/docs
 3. Admin panel is served at http://localhost/admin
-4. Includes Celery for scheduled and background tasks. See app/core/tasks.py and app/settings.py for examples
 
 # Show Case
 ## Docs page ##
