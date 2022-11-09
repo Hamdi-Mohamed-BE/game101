@@ -84,7 +84,7 @@ style="margin-right: 10px;"/>
 # AUTHOR
 Created at 🌙 by HamdiAAA
 - my profile : [Hamdi Mohamed ](https://github.com/HamdiAAA).
-### 2021 FUN FACTS : 
+### 2022 FUN FACTS : 
 - House of the dragons
 - God of war ragnarok is the game of the year.
 - the witcher 3 wild hunt is the best game of all times ❤ .
