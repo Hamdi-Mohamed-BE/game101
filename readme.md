@@ -1,4 +1,4 @@
-# Django Rest framework skeleton app
+# Django Rest framework Game app
 
 ## Content: ##
 
@@ -45,6 +45,42 @@
 2. Swagger docs are served at http://localhost/docs/all and http://localhost/docs/{app name}
 3. Admin panel is served at http://localhost/admin
 4. Includes Celery for scheduled and background tasks. See app/core/tasks.py and app/settings.py for examples
+
+# Show Case
+## Docs page ##
+<img
+src="./images/docs.png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px;"/>
+
+## Response example ##
+<img
+src="./images/response.png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px;"/>
+
+## Unit test output ##
+<img
+src="./images/unit-test.png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px;"/>
+
+## Example of params that can be applied to qurey ##
+<img
+src="./images/example.png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px;"/>
+
+## Wrong name test case code ##
+<img
+src="./images/wrong-name-test-case.png"
+raw=true
+alt="Subject Pronouns"
+style="margin-right: 10px;"/>
 
 # AUTHOR
 Created at 🌙 by HamdiAAA

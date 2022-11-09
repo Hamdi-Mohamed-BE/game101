@@ -101,6 +101,21 @@ class GameFilterTestAPI(TestCase):
         # print a green message saying that the test passed
         print('\033[92m' + 'test_filter_by_platform passed with order by' + '\033[0m')
 
+        # test on wrong game name
+        params = {
+            "game" : "wicher",
+        }
+        # re call the api with the filter params
+        res = self.client.get(GAMES_LIST_URL , params)
+        # make sure that the request was successful
+        self.assertEqual(res.status_code , status.HTTP_200_OK)
+        # get the games returned from the api
+        games_loaded = res.data['results']
+        # make sure that the response is not empty
+        self.assertTrue(len(games_loaded) == 0)
+        # print a green message saying that the test passed
+        print('\033[92m' + 'test_filter_by_platform passed with wrong game name' + '\033[0m')
+
         
 
 # to run this test use the following command : python manage.py test games.tests.test_games_filter.GameFilterTestAPI
