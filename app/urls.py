@@ -13,7 +13,7 @@ admin.site.index_title = 'Games 101'
 admin.site.site_title = 'Games 101'
 admin.site.site_url = ''
 
-games_api_urlpatterns = path('api/games' , include('games.urls'))
+games_api_urlpatterns = path('api/games/' , include('games.urls'))
 
 
 urlpatterns = [
