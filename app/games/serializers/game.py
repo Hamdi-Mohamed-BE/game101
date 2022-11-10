@@ -45,6 +45,7 @@ class GameCreateSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
         fields = (
+            'id' ,
             'user_id' ,
             'game' ,
             'play_time' ,

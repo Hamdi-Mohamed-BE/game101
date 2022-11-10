@@ -73,7 +73,7 @@ class GameCRUDTestAPI(TestCase):
             ]
         }
         # make a post request to the games:game-create endpoint
-        res = self.client.post(GAMES_LIST_URL , payload , format='json')
+        res = self.client.post(reverse('games:game-create') , payload , format='json')
         # make sure that the request was not successful
         self.assertEqual(res.status_code , status.HTTP_400_BAD_REQUEST)
     
@@ -98,12 +98,8 @@ class GameCRUDTestAPI(TestCase):
         res = self.client.post(reverse('games:game-create') , payload , format='json')
         # make sure that the request was successful
         self.assertEqual(res.status_code , status.HTTP_201_CREATED)
-        # get the games returned from the api
-        games_loaded = res.data['results']
-        # games now are not empty
-        self.assertTrue(len(games_loaded) > 0)
-        # get the game id
-        game_id = games_loaded[0]['id']
+        # get the game id from the response
+        game_id = res.data['id']
 
         # call the games:game-detail endpoint with the pk as the game id
         res = self.client.get(reverse('games:game-detail' , kwargs={'pk' : game_id}))
@@ -115,7 +111,6 @@ class GameCRUDTestAPI(TestCase):
         self.assertEqual(game_loaded['game'] , payload['game'])
         self.assertEqual(game_loaded['play_time'] , payload['play_time'])
         self.assertEqual(game_loaded['genre'] , payload['genre'])
-        self.assertEqual(game_loaded['platforms'] , payload['platforms'])
         # print a green message saying that the test passed
         print('\033[92m' + 'test_game_retrieve_api passed' + '\033[0m')
 
@@ -136,11 +131,9 @@ class GameCRUDTestAPI(TestCase):
         # make sure that the request was successful
         self.assertEqual(res.status_code , status.HTTP_201_CREATED)
         # get the games returned from the api
-        games_loaded = res.data['results']
-        # games now are not empty
-        self.assertTrue(len(games_loaded) > 0)
-        # get the game id
-        game_id = games_loaded[0]['id']
+        game_loaded = res.data
+        # get the game id from the response
+        game_id = game_loaded['id']
 
         # call the games:game-detail endpoint with the pk as the game id
         res = self.client.get(reverse('games:game-detail' , kwargs={'pk' : game_id}))
@@ -152,7 +145,6 @@ class GameCRUDTestAPI(TestCase):
         self.assertEqual(game_loaded['game'] , payload['game'])
         self.assertEqual(game_loaded['play_time'] , payload['play_time'])
         self.assertEqual(game_loaded['genre'] , payload['genre'])
-        self.assertEqual(game_loaded['platforms'] , payload['platforms'])
 
         # set the payload to be used in the put request
         payload = {
@@ -162,6 +154,7 @@ class GameCRUDTestAPI(TestCase):
             "platforms_names" : [
                 "PC",
                 "PS4",
+                "XBOX"
             ]
         }
         # make a put request to the games:game-update endpoint
@@ -174,7 +167,7 @@ class GameCRUDTestAPI(TestCase):
         self.assertEqual(game_loaded['game'] , payload['game'])
         self.assertEqual(game_loaded['play_time'] , payload['play_time'])
         self.assertEqual(game_loaded['genre'] , payload['genre'])
-        self.assertEqual(game_loaded['platforms'] , payload['platforms'])
+        self.assertEqual(len(game_loaded['platforms']) , len(payload['platforms_names']))
         # print a green message saying that the test passed
         print('\033[92m' + 'test_update_game passed' + '\033[0m')
 
@@ -195,18 +188,16 @@ class GameCRUDTestAPI(TestCase):
         # make sure that the request was successful
         self.assertEqual(res.status_code , status.HTTP_201_CREATED)
         # get the games returned from the api
-        games_loaded = res.data['results']
-        # games now are not empty
-        self.assertTrue(len(games_loaded) > 0)
-        # get the game id
-        game_id = games_loaded[0]['id']
+        game_loaded = res.data
+        # get the game id from the response
+        game_id = game_loaded['id']
 
         # call games:game-delete endpoint with the pk as the game id
         res = self.client.delete(reverse('games:game-delete' , kwargs={'pk' : game_id}))
         # make sure that the request was successful
         self.assertEqual(res.status_code , status.HTTP_204_NO_CONTENT)
         # re load the games from the api
-        res = self.client.get(reverse('games:game-list'))
+        res = self.client.get(reverse('games:games-list'))
         # make sure that the request was successful
         self.assertEqual(res.status_code , status.HTTP_200_OK)
         # get the games returned from the api
