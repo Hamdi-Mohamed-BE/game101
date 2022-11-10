@@ -35,7 +35,7 @@ class GameFilter(filters.FilterSet):
     # game use filter method 
     game = filters.CharFilter(method='filter_game')
     # genre use filter method use icontains lookup
-    genre = filters.CharFilter(field_name='genres__name' , lookup_expr='icontains')
+    genre = filters.CharFilter(field_name='genre' , lookup_expr='icontains')
 
     # order_by use filter method
     order_by = filters.CharFilter(method='filter_order_by') 
