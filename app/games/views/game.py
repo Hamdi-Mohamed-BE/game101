@@ -1,21 +1,25 @@
 # rest framework
-from rest_framework import permissions, status
-from rest_framework.response import Response
-from rest_framework.viewsets import GenericViewSet
-from rest_framework.generics import ListAPIView , CreateAPIView , RetrieveAPIView , UpdateAPIView , DestroyAPIView
-from rest_framework.serializers import ValidationError
+from django.shortcuts import get_object_or_404
+from rest_framework.generics import (
+    ListAPIView , CreateAPIView ,
+    RetrieveAPIView , UpdateAPIView , 
+    DestroyAPIView
+)
 # swagger
 from drf_yasg.utils import swagger_auto_schema 
-from rest_framework.decorators import parser_classes
 from drf_yasg import openapi
 # models
 from games.models import Game
 # filters
 from games.filters.game import GameFilter
 from django_filters import rest_framework as filters
-
 # serializers
-from games.serializers.game import GameSerializer
+from games.serializers.game import (
+    GameSerializer , 
+    GameCreateSerializer ,
+    GameUpdateSerializer
+)
+
 
 # views to write
 class GamesListView(ListAPIView):
@@ -67,3 +71,33 @@ class GamesListView(ListAPIView):
     )
     def get(self , request , *args , **kwargs):
         return super().get(request , *args , **kwargs)
+
+
+class GamesCreateView(CreateAPIView):
+    queryset = Game.objects.all()
+    serializer_class = GameCreateSerializer
+
+
+class GamesRetrieveView(RetrieveAPIView):
+    serializer_class = GameSerializer
+
+    def get_object(self):
+        pk = self.kwargs.get('pk')
+        return get_object_or_404(Game , pk=pk)
+
+
+class GamesUpdateView(UpdateAPIView):
+    serializer_class = GameUpdateSerializer
+
+    def get_object(self):
+        pk = self.kwargs.get('pk')
+        return get_object_or_404(Game , pk=pk)
+
+
+class GamesDeleteView(DestroyAPIView):
+
+    def get_object(self):
+        # here we can add logic to check if the user is the owner of the game (the requesting user)
+        # or just add permissions class to the view + with authentication permission classes
+        pk = self.kwargs.get('pk')
+        return get_object_or_404(Game , pk=pk)
