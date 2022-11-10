@@ -9,7 +9,7 @@ from autocorrect import Speller
 spell = Speller(lang='en')
 
 # a function to ge the closest match for a word in list of words
-def get_close_matches(word  , list_of_word ):
+def get_close_matches(word  , list_of_word):
     """
         -The main idea is to loop through the list of words and get the closest match
         -The closest match we need to get how many letters are the same
@@ -59,6 +59,7 @@ class GameFilter(filters.FilterSet):
             if spelled_value not in games_names:
                 # here we get the closest match to the game name
                 closet_match = get_close_matches(spelled_value , games_names)
+            # update the qureyset
             queryset = queryset.filter(
                 Q(game__icontains=spelled_value) | 
                 Q(game__icontains=value) |

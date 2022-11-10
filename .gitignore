@@ -113,9 +113,9 @@ celerybeat-schedule
 .mr.developer.cfg
 .project
 .pydevproject
-.env
-.env.*
-!.env.example
+# .env
+# .env.*
+# !.env.example
 # mkdocs documentation
 /site
 
