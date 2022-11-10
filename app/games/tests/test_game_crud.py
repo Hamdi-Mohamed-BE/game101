@@ -76,6 +76,8 @@ class GameCRUDTestAPI(TestCase):
         res = self.client.post(reverse('games:game-create') , payload , format='json')
         # make sure that the request was not successful
         self.assertEqual(res.status_code , status.HTTP_400_BAD_REQUEST)
+        # print a green message saying that the test passed
+        print('\033[92m' + 'test_game_create_api_with_invalid_payload passed' + '\033[0m')
     
     def test_game_retrieve_api(self):
         # call the games:game-detail endpoint with the pk as the game id (in this case is not created yet)

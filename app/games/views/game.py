@@ -88,6 +88,9 @@ class GamesRetrieveView(RetrieveAPIView):
 
 class GamesUpdateView(UpdateAPIView):
     serializer_class = GameUpdateSerializer
+    # allow on PUT method
+    allowed_methods = ['PUT']
+
 
     def get_object(self):
         pk = self.kwargs.get('pk')
@@ -95,6 +98,8 @@ class GamesUpdateView(UpdateAPIView):
 
 
 class GamesDeleteView(DestroyAPIView):
+    serializer_class = GameSerializer
+    queryset = Game.objects.all()
 
     def get_object(self):
         # here we can add logic to check if the user is the owner of the game (the requesting user)
