@@ -20,9 +20,6 @@
 
    docker-compose up
 
-4. After docker image is built and server started, setup migrations/static files/admin access:
-
-   docker-compose exec app sh entrypoint.sh
 
 ## Manual setup ##
 
