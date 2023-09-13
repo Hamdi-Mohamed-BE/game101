@@ -12,7 +12,7 @@ then
     echo "PostgreSQL started !"
     # celery -A core worker -l info -Q main-queue -B
     python /app/manage.py migrate
-    python /app/manage.py collectstatic --no-input --clear
+    # python /app/manage.py collectstatic --no-input --clear
     # create superuser
     python /app/manage.py createsuperuser --noinput
     python /app/manage.py runserver 0.0.0.0:80
